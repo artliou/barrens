@@ -1,4 +1,4 @@
-# Barrens DB Documentation
+# Barrens DB Documentation & Resources
 
 > Location-based chat app with epic point system
 
@@ -74,7 +74,7 @@ Creating Areas:
 
 > "INSERT into areas VALUES (string, create polygon with location);"
 
-> "INSERT into areas VALUES (DEFAULT, 'Noe-Mission', ST_Polygon(ST_GeomFromText('LINESTRING(37.7453366 -122.4379927, 37.7481003 -122.415084, 37.76088 -122.4127313, 37.7607018 122.4360408, 37.7453366 -122.4379927)'), 4326)); " To create a box (4 edges), you will need to specify 5 coordinate pairs. (To close the box, you must create a line from the end of the last line back to the original point) 
+> "INSERT into areas VALUES (DEFAULT, 'Noe-Mission', ST_Polygon(ST_GeomFromText('LINESTRING(37.7453366 -122.4379927, 37.7481003 -122.415084, 37.76088 -122.4127313, 37.7607018 122.4360408, 37.7453366 -122.4379927)'), 4326)); " To create a box (4 edges), you will need to specify 5 coordinate pairs. (To close the box, you must create a line from the end of the last line back to the original point)
 
 Additionally, to make use of the auto-increment that comes with a 'SERIAL' column, you must specify 'DEFAULT' in the SERIAL-ized column value position.
 

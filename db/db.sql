@@ -67,7 +67,7 @@ CREATE TABLE session (
 
 -- Attendees, Join would be many events to many users; Potential for Future Implementation
 -- CREATE TABLE users_events (
---   ID SERIAL PRIMARY KEY, 
+--   ID SERIAL PRIMARY KEY,
 --   users
 --   events
 -- );

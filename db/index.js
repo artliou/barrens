@@ -1,7 +1,6 @@
 const pg = require('pg');
 
-// create a config to configure both pooling behavior
-// and client options
+// create a config to configure both pooling behavior and client options
 // note: all config is optional and the environment variables
 // will be read if the config is not present
 const config = {
@@ -15,17 +14,16 @@ const config = {
 };
 
 //this initializes a connection pool
-//it will keep idle connections open for 30 seconds
-//and set a limit of maximum 10 idle clients
+//it will keep idle connections open for 30 seconds and set a limit of maximum 10 idle clients
 const pool = new pg.Pool(config);
 
+// if an error is encountered by a client while it sits idle in the pool
+// the pool itself will emit an error event with both the error and
+// the client which emitted the original error
+// this is a rare occurrence but can happen if there is a network partition
+// between your application and the database, the database restarts, etc.
+// and so you might want to handle it and at least log it out
 pool.on('error', function(err, client) {
-  // if an error is encountered by a client while it sits idle in the pool
-  // the pool itself will emit an error event with both the error and
-  // the client which emitted the original error
-  // this is a rare occurrence but can happen if there is a network partition
-  // between your application and the database, the database restarts, etc.
-  // and so you might want to handle it and at least log it out
   console.error('idle client error', err.message, err.stack);
 });
 
@@ -40,19 +38,3 @@ module.exports.query = function(text, values, callback) {
 module.exports.connect = function(callback) {
   return pool.connect(callback);
 };
-
-/*** Passing a Query to the Pool
-const pool = require('./lib/db');
-
-//to run a query we just pass it to the pool
-//after we're done nothing has to be taken care of
-//we don't have to return any client to the pool or close a connection
-pool.query('SELECT $1::int AS number', ['2'], function(err, res) {
-  if(err) {
-    return console.error('error running query', err);
-  }
-
-  console.log('number:', res.rows[0].number);
-});
-
-***/

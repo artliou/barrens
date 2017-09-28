@@ -4,7 +4,7 @@ const pg = require('pg');
 // note: all config is optional and the environment variables
 // will be read if the config is not present
 const config = {
-  user: 'brianw_', //env var: PGUSER // TODO: figure out how to create new users
+  user: 'artliou', //env var: PGUSER // TODO: figure out how to create new users
   database: 'barrens', //env var: PGDATABASE
   //password: 'PGPASSWORD', //env var: PGPASSWORD // unneccessary until you set a PW
   host: 'localhost', // Server hosting the postgres database

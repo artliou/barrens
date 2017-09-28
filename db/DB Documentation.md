@@ -4,8 +4,8 @@
 
 ## Victorious Vipers
 
-  - Mason Raasch (@man-of-seafood)
   - Arthur Liou (@artliou)
+  - Mason Raasch (@man-of-seafood)
   - Brian Wong (@bwong858)
 
 ## Table of Contents
